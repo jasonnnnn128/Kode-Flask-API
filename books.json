@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "items": [
+            {
+                "title": "laut bercerita",
+                "author": "Leila S.Chudori",
+                "price": 110000
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "items": [
+            {
+                "title": "Cara agar Tidak kecanduan 67",
+                "author": "Abdurrafi as sufi",
+                "price": 676767
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "items": [
+            {
+                "title": "Kapan Kita?",
+                "author": "Agus Rahmat",
+                "price": 666543
+            }
+        ]
+    }
+]
