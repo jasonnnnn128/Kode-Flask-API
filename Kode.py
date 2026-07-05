@@ -13,16 +13,13 @@ def read_json():
     with open(DATA_FILE, 'r') as file:
         return json.load(file)
 
-# TODO: simpan data ke file JSON
 def write_json(data):
     with open(DATA_FILE, 'w') as file:
         json.dump(data,file,indent=4)
 
-# format harga ke rupiah
 def rupiah(price):
     return f"Rp{price:,.0f}".replace(",", ".")
 
-# format data
 def format_book(data):
     return {
         "id": data["id"],
@@ -36,7 +33,6 @@ def format_book(data):
         ]
     }
 
-# validasi items
 def check_items(items):
     if not isinstance(items, list) or len(items) == 0:
         return False, "items harus berupa list dan tidak boleh kosong"
@@ -49,7 +45,6 @@ def check_items(items):
             return False, "price tidak boleh negatif"
     return True, None
 
-# ROUTES
 @app.route("/")
 def home():
     return jsonify({
@@ -63,8 +58,7 @@ def home():
         ]
     })
 
-# GET semua data
-# TODO: buat endpoint GET /book
+
 @app.route("/book", methods=["GET"])
 def get_books():
     books = read_json()
@@ -75,8 +69,6 @@ def get_books():
         "data": result
     })
 
-# GET by id
-# TODO: buat endpoint GET /book/<id> (ambil data berdasarkan ID)
 @app.route("/book/<int:id>", methods=["GET"])
 def get_book(id):
     books = read_json()
@@ -88,8 +80,6 @@ def get_book(id):
             })
     return jsonify({"status": "error", "message": "data tidak ditemukan"}), 404
 
-# POST tambah data
-# TODO: buat endpoint POST /book (tambah data buku baru)
 @app.route("/book", methods=["POST"])
 def add_book():
     books = read_json()
@@ -117,8 +107,6 @@ def add_book():
         "data": format_book(data)
     }), 201
 
-# PUT update data
-# TODO: buat endpoint PUT /book/<id> (update data berdasarkan ID)
 @app.route("/book/<int:id>", methods=["PUT"])
 def update_book(id):
     books = read_json()
@@ -144,8 +132,6 @@ def update_book(id):
 
     return jsonify({"message": "data tidak ditemukan"}), 404
 
-# DELETE data
-# TODO: buat endpoint DELETE /book/<id> (hapus data berdasarkan ID)
 @app.route("/book/<int:id>", methods=["DELETE"])
 def delete_book(id):
     books = read_json()
